@@ -14,7 +14,7 @@ const port = process.env.PORT || 4000;
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 
-app.use(cors({
+app.use(cors({credentials:true,
   origin:'https://ibrahimblog.onrender.com'}));
 app.use(express.json());
 app.use(cookieParser());
