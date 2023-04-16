@@ -10,11 +10,12 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs');
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT || 4000; 
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 
-app.use(cors({credentials:true,origin:'https://ibrahimblog.onrender.com'}));
+app.use(cors({
+  origin:'https://ibrahimblog.onrender.com'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
@@ -34,7 +35,9 @@ app.post('/register', async (req,res) => {
     res.status(400).json(e);
   }
 });
-
+app.get('/dssd',async(req,res)=>{
+res.send("hryyyyy");
+})
 app.post('/login', async (req,res) => {
   const {username,password} = req.body;
   const userDoc = await User.findOne({username});
