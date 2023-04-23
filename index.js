@@ -10,17 +10,18 @@ const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs');
+const uri = process.env.MONGODB_URI;
 const port = process.env.PORT || 4000; 
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdfe45we45w345wegw345werjktjwertkj';
-
+require('dotenv').config()
 app.use(cors({credentials:true,
   origin:'https://ibrahimblog.onrender.com'}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-mongoose.connect('mongodb+srv://ibrahimdarkseid:inayA2520@cluster0.sstamxl.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(uri);
 
 app.post('/register', async (req,res) => {
   const {username,password} = req.body;
