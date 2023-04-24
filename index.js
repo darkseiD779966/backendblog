@@ -16,7 +16,9 @@ const salt = bcrypt.genSaltSync(10);
 const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 require('dotenv').config()
 app.use(cors({credentials:true,
-  origin:'*'}));
+  origin:'https://ibrahimblog.onrender.com',
+methods:['GET','POST','FETCH','DELETE','POST']
+             }));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
